@@ -1,12 +1,16 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import Login from './pages/Login'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-const Routes = createAppContainer(createSwitchNavigator({
-  Login,
-  Home,
-  Profile
-}))
+import LoginScreen from './pages/Login';
+import HomeScreen from './pages/Home';
+import ProfileScreen from './pages/Profile';
 
-export default Routes
+const Routes = createAppContainer(
+  createBottomTabNavigator({
+    Login,
+    Home,
+    Profile,
+  }),
+);
+
+export default Routes;
