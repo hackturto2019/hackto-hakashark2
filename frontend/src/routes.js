@@ -1,12 +1,11 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import LoginScreen from './pages/Login';
-import HomeScreen from './pages/Home';
-import ProfileScreen from './pages/Profile';
+import Login from './pages/Login'
+import Home from './pages/Home'
+import Profile from './pages/Profile'
 
 const Routes = createAppContainer(
-  createBottomTabNavigator({
+  createSwitchNavigator({
     Login,
     Home,
     Profile,
