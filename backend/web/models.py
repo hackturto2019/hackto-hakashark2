@@ -73,4 +73,4 @@ class Evento(models.Model):
     local = models.CharField(max_length=128)
     horario = models.DateTimeField()
     descricao = models.CharField(max_length=300)
-    estabelecimento = models.ForeignKey(Estabelecimento)
+    estabelecimento = models.ForeignKey(Estabelecimento, on_delete=models.SET_NULL, null=True)

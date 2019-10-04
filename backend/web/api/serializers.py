@@ -1,37 +1,37 @@
 from ..models import *
 from rest_framework import serializers
 
-class UsuarioSerializer():
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = '__all__'
 
 
-class ComentarioSerializer():
+class ComentarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comentario
         fields = '__all__'
 
 
-class PontoTuristicoSerializer():
+class PontoTuristicoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PontoTuristico
         fields = '__all__'
 
 
-class EstabelecimentoSerializer():
+class EstabelecimentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estabelecimento
         fields = '__all__'
 
 
-class GuiaTuristicoSerializer():
+class GuiaTuristicoSerializer(serializers.ModelSerializer):
     class Meta:
         model = GuiaTuristico
         fields = '__all__'
 
 
-class EventoSerializer():
+class EventoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evento
         fields = '__all__'
