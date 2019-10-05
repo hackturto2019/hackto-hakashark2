@@ -6,6 +6,7 @@ import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Ic
 
 export default class TouristItem extends Component {
   render() {
+    console.log(this.props)
     return (
       <Container>
         <Header />

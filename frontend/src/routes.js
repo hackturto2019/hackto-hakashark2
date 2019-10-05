@@ -7,8 +7,8 @@ import SpotsTourist from './pages/SpotsTourist';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    SpotsTourist,
     Home,
+    SpotsTourist,
     Login,
     Profile,
   }),
