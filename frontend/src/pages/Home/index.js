@@ -64,6 +64,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+
     this.loanding(false);
     console.log(this.state)
   }

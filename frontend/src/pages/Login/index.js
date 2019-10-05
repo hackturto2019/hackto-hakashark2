@@ -1,109 +1,74 @@
-import React from 'react';
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
+import React, { Component } from "react";
+
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
   Text,
+  TextInput,
+  TouchableOpacity,
   StatusBar,
-} from 'react-native';
+  SafeAreaView,
+  AsyncStorage,
+  ActivityIndicator
+} from "react-native";
+import styles from "./styles";
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export default class Login extends Component {
+  state = {
+    nomeusuario: "",
+    loading: false
+  };
 
-import { Button } from 'nachos-ui';
+  async componentDidMount() {
+    try {
+      const usuario = await AsyncStorage.getItem("@Toviajando:nomeusuaio");
+      console.tron.log(usuario);
+      if (!usuario) return null;
+    } catch (error) { }
+    // this.navegar();
+  }
 
-const Login: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-              <Button>Texto qualquer</Button>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
+  navegar = () => {
+    this.props.navigation.navigate("Home");
+  };
+
+  salvandoUsuario = async () => {
+    const { nomeusuario } = this.state;
+
+    if (nomeusuario.length === 0) return null;
+
+    await AsyncStorage.setItem("@Toviajando:nomeusuaio", nomeusuario);
+
+    this.navegar();
+  };
+
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content" backgroundColor="#38A1F3" />
+
+        <Text style={styles.twitter}>Entrar no TO Viajando</Text>
+        <TextInput
+          style={styles.input}
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={this.state.nomeusuario}
+          placeholder="ex: lucaspedronet"
+          onChangeText={texto => this.setState({ nomeusuario: texto })}
+          returnKeyType="send"
+          onEndEditing={this.navegar}
+        />
+        <TouchableOpacity
+          onPress={this.salvandoUsuario}
+          style={styles.botaoEntrar}
+        >
+          {this.state.loading ? (
+            <ActivityIndicator />
+          ) : (
+              <Text style={styles.textoBotao}>Entrar</Text>
+            )}
+        </TouchableOpacity>
       </SafeAreaView>
-    </>
-  );
-};
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
-
-export default Login;
+    );
+  }
+}

@@ -10,10 +10,10 @@ import TouristGuide from './pages/TouristGuide';
 
 const Routes = createAppContainer(
   createSwitchNavigator({
-    Home,
-    TouristGuide,
     Login,
     SpotsTourist,
+    TouristGuide,
+    Home,
     Profile,
   }),
 );
