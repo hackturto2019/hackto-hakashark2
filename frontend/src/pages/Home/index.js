@@ -1,6 +1,9 @@
+/* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
 
 import { View, TouchableOpacity, Image, Text, FlatList, ActivityIndicator } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+
 
 // import { Container } from './styles';
 
@@ -26,13 +29,23 @@ export default class Home extends Component {
 
   render() {
     return (
-      <View>
-        {
-          this.state.loanding
-            ? this.handleSpotsTorist()
-            : <ActivityIndicator color="#445" />
-        }
-      </View>
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Header</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Right>
+        </Header>
+      </Container>
     )
   }
 }
