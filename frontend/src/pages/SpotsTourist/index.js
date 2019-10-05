@@ -1,8 +1,13 @@
+/* eslint-disable jsx-quotes */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 
 export default class SpotsTourist extends Component {
+  state = {
+
+  }
+
   render() {
     return (
       <Container>

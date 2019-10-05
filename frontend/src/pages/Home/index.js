@@ -15,7 +15,7 @@ export default class Home extends Component {
 
   state = {
     loanding: true,
-    spotsTourist: [
+    beaches: [
       {
         id: 1,
         title: 'Praia do Caju',
@@ -39,6 +39,22 @@ export default class Home extends Component {
         note: 'Excelente ambiente'
       },
     ],
+    waterfalls: [
+      {
+        id: 1,
+        title: 'Aventuras',
+        avathar: 'https://png.pngtree.com/element_our/png_detail/20181102/avatar-profile-logo-vector-emblem-illustration-modern-illustration-png_227485.jpg',
+        imageBackground: 'https://melhoresdestinosdobrasil.com.br/wp-content/uploads/2017/03/taquarucu_tocantins_cachoeira.jpg',
+        note: 'Excelente ambiente'
+      },
+      {
+        id: 1,
+        title: 'Aventuras',
+        avathar: 'https://png.pngtree.com/element_our/png_detail/20181102/avatar-profile-logo-vector-emblem-illustration-modern-illustration-png_227485.jpg',
+        imageBackground: 'https://i2.wp.com/www.garfoemala.com.br/wp-content/uploads/IMG-9762-1-1.jpg?resize=1140%2C641&ssl=1',
+        note: 'Excelente ambiente'
+      },
+    ]
   }
 
   componentDidMount() {
@@ -48,12 +64,16 @@ export default class Home extends Component {
 
   loanding = (state = true) => this.setState({ loanding: state })
 
-  handleSpotsTorist = () => {
+  handleBeaches = () => {
     return (<FlatList
-      data={this.state.spotsTourist}
+      data={this.state.beaches}
       keyExtractor={tourist => String(tourist.id)}
       renderItem={({ item }) => <TouristItem tourist={item} />}
     />);
+  }
+
+  handleWaterfalls = () => {
+    return (<FlatList />)
   }
 
   handleNavigation = () => {
@@ -75,14 +95,23 @@ export default class Home extends Component {
           </Button>
         </Header>
         <Content padder>
-          <H3>Destinos</H3>
+          <H3>Praias</H3>
           <Content padder>
             {
               !this.state.loanding
-                ? this.handleSpotsTorist()
+                ? this.handleBeaches()
                 : <ActivityIndicator color="red" size={30} />
             }
           </Content>
+          <H3>Cachoeiras</H3>
+          <Content padder>
+            {
+              !this.state.loanding
+                ? this.handleWaterfalls()
+                : <ActivityIndicator color="red" size={30} />
+            }
+          </Content>
+
         </Content>
       </Container>
     )

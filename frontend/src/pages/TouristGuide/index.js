@@ -11,7 +11,10 @@ import {
   Body,
   Right,
   Thumbnail,
-  Text
+  Text,
+  Icon,
+  Button,
+  Title
 } from 'native-base';
 
 import TouristGuidItem from '../../components/TouristGuideItem'
@@ -42,21 +45,21 @@ export default class TouristGuide extends Component {
         note: 'Muito prazeroso',
       },
       {
-        id: 3,
+        id: 4,
         name: 'Pedro Ricardo',
         description: 'Super educado, atencioso, conhece muito bem os principais prontos turísticos de Taquaruçu.',
         avathar: 'https://www.es1.com.br/assets/noticias/7629/Serfc0nP3z9H.jpg',
         note: 'Muito prazeroso',
       },
       {
-        id: 3,
+        id: 5,
         name: 'Pedro Ricardo',
         description: 'Super educado, atencioso, conhece muito bem os principais prontos turísticos de Taquaruçu.',
         avathar: 'https://www.es1.com.br/assets/noticias/7629/Serfc0nP3z9H.jpg',
         note: 'Muito prazeroso',
       },
       {
-        id: 3,
+        id: 6,
         name: 'Pedro Ricardo',
         description: 'Super educado, atencioso, conhece muito bem os principais prontos turísticos de Taquaruçu.',
         avathar: 'https://www.es1.com.br/assets/noticias/7629/Serfc0nP3z9H.jpg',
@@ -80,13 +83,28 @@ export default class TouristGuide extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Guias Turistico</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Text>Cancel</Text>
+            </Button>
+          </Right>
+        </Header>
         {
           this.state.loanding
             ? <ActivityIndicator color="blue" />
             : this.handleTouristGuid()
         }
-      </Fragment>
+      </Container>
     );
   }
 }
