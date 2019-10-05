@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -7,7 +6,6 @@ import {
   View,
   Text,
   StatusBar,
-  Button
 } from 'react-native';
 
 import {
@@ -17,6 +15,8 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import { Button } from 'nachos-ui';
 
 const Login: () => React$Node = () => {
   return (
@@ -39,6 +39,7 @@ const Login: () => React$Node = () => {
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
               </Text>
+              <Button>Texto qualquer</Button>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>

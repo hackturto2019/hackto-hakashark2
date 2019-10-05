@@ -1,14 +1,19 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable semi */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import LoginScreen from './pages/Login';
-import HomeScreen from './pages/Home';
-import ProfileScreen from './pages/Profile';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import Profile from './pages/Profile';
+import SpotsTourist from './pages/SpotsTourist';
+import TouristGuide from './pages/TouristGuide';
 
 const Routes = createAppContainer(
-  createBottomTabNavigator({
-    Login,
+  createSwitchNavigator({
     Home,
+    TouristGuide,
+    Login,
+    SpotsTourist,
     Profile,
   }),
 );
