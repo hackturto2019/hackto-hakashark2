@@ -14,32 +14,46 @@ const aventuras = require('../../assets/spotsTourist/ativo-2.png')
 export default class Home extends Component {
 
   state = {
-    loanding: false,
+    loanding: true,
     spotsTourist: [
       {
         id: 1,
-        title: 'Praias',
-        url: praia,
+        title: 'Praia do Caju',
+        description: '',
+        avathar: 'https://image.freepik.com/vetores-gratis/perfil-de-avatar-de-homem-no-icone-redondo_24640-14046.jpg',
+        imageBackground: 'http://www.palmas.to.gov.br/media/tmp/ede81da753307154b8983fb19782ef13',
+        note: 'Muito prazeroso'
       },
       {
         id: 2,
-        title: 'Acamps',
-        url: acamps,
+        title: 'Praia da graciosa',
+        avathar: 'https://image.freepik.com/vetores-gratis/perfil-de-avatar-de-homem-no-icone-redondo_24640-14044.jpg',
+        imageBackground: 'http://www.palmas.to.gov.br/media/tmp/61066ac2b533592b050eeba85647430d',
+        note: 'Melhor experiência'
       },
       {
         id: 3,
         title: 'Aventuras',
-        url: aventuras,
+        avathar: 'https://png.pngtree.com/element_our/png_detail/20181102/avatar-profile-logo-vector-emblem-illustration-modern-illustration-png_227485.jpg',
+        imageBackground: 'https://media-cdn.tripadvisor.com/media/photo-s/18/7c/2d/d2/vista-da-praia-ii.jpg',
+        note: 'Excelente ambiente'
       },
     ],
   }
+
+  componentDidMount() {
+    this.loanding(false);
+    console.log(this.state)
+  }
+
+  loanding = (state = true) => this.setState({ loanding: state })
 
   handleSpotsTorist = () => {
     return (<FlatList
       data={this.state.spotsTourist}
       keyExtractor={tourist => String(tourist.id)}
       renderItem={({ item }) => <TouristItem tourist={item} />}
-    />)
+    />);
   }
 
   handleNavigation = () => {

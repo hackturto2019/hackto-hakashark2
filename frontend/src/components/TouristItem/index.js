@@ -1,49 +1,45 @@
 /* eslint-disable prettier/prettier */
 
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Image, ImageBackground, View } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Row, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
 export default class TouristItem extends Component {
+
+  navegar = (id) => {
+    console.log(id)
+  }
   render() {
-    console.log(this.props)
+    const { tourist } = this.props;
+    console.log(tourist);
     return (
-      <Container>
-        <Header />
-        <Content>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{ uri: 'Image URL' }} />
-                <Body>
-                  <Text>NativeBase</Text>
-                  <Text note>GeekyAnts</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{ uri: 'Image URL' }} style={{ height: 200, width: null, flex: 1 }} />
+      <View>
+        {
+          <Card onPress={() => this.navegar(tourist.id)}>
+
+            <CardItem cardBody >
+              <Image source={{ uri: `${tourist.imageBackground}` }} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent>
                   <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
+                  <Text note>12 Likes</Text>
                 </Button>
               </Left>
               <Body>
                 <Button transparent>
                   <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
+                  <Text note>4 Comments</Text>
                 </Button>
               </Body>
               <Right>
-                <Text>11h ago</Text>
+                <Text note>11h ago</Text>
               </Right>
             </CardItem>
           </Card>
-        </Content>
-      </Container>
+        }
+      </View>
     );
   }
 }
