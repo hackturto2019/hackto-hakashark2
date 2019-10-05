@@ -5,9 +5,8 @@ import { View, TouchableOpacity, Image, FlatList, ActivityIndicator } from 'reac
 import { Container, H1, H2, H3, Text, Header, Item, Input, Left, Body, Right, Content, Button, Icon, Title } from 'native-base';
 
 import TouristItem from '../../components/TouristItem'
-const praia = require('../../assets/spotsTourist/ativo-1.png')
-const acamps = require('../../assets/spotsTourist/ativo-3.png')
-const aventuras = require('../../assets/spotsTourist/ativo-2.png')
+import DestinationsItem from '../../components/DestinationsItem'
+
 
 // import { Container } from './styles';
 
@@ -48,10 +47,17 @@ export default class Home extends Component {
         note: 'Excelente ambiente'
       },
       {
-        id: 1,
+        id: 2,
         title: 'Aventuras',
         avathar: 'https://png.pngtree.com/element_our/png_detail/20181102/avatar-profile-logo-vector-emblem-illustration-modern-illustration-png_227485.jpg',
         imageBackground: 'https://i2.wp.com/www.garfoemala.com.br/wp-content/uploads/IMG-9762-1-1.jpg?resize=1140%2C641&ssl=1',
+        note: 'Excelente ambiente'
+      },
+      {
+        id: 3,
+        title: 'Aventuras',
+        avathar: 'https://png.pngtree.com/element_our/png_detail/20181102/avatar-profile-logo-vector-emblem-illustration-modern-illustration-png_227485.jpg',
+        imageBackground: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReT3jXN4t66nPdwxCEO-uL98gVviFGvRlcFCdS07q_A5xHZkFV',
         note: 'Excelente ambiente'
       },
     ]
@@ -73,7 +79,20 @@ export default class Home extends Component {
   }
 
   handleWaterfalls = () => {
-    return (<FlatList />)
+    return (<FlatList
+      data={this.state.waterfalls}
+      keyExtractor={tourist => String(tourist.id)}
+      renderItem={({ item }) => <TouristItem tourist={item} />}
+    />);
+  }
+
+
+  handleDestinations = () => {
+    return (<FlatList
+      data={this.state.waterfalls}
+      keyExtractor={tourist => String(tourist.id)}
+      renderItem={({ item }) => <DestinationsItem tourist={item} />}
+    />);
   }
 
   handleNavigation = () => {
@@ -95,6 +114,14 @@ export default class Home extends Component {
           </Button>
         </Header>
         <Content padder>
+          {/* <H3>Destinos</H3>
+          <Content padder>
+            {
+              !this.state.loanding
+                ? this.handleDestinations()
+                : <ActivityIndicator color="red" size={30} />
+            }
+          </Content> */}
           <H3>Praias</H3>
           <Content padder>
             {
